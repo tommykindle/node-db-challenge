@@ -30,13 +30,13 @@ function addProjects(project) {
 }
 
 
-// get task by project
-function getTasks(id) {
-  return db('projects as p')
-    .join('task as t', 't.project_id', '=', 'p.id')
-    .select('t.id', 't.description', 't.notes', 't.completed')
-    .where({ project_id: id })
+// get tasks
+function getTasks() {
+  return db('task as t ')
+    .join('projects as p ', 't.project_id', '=', 'p.id')
+    .select('t.id', 'p.name as project_name', 'p.description as project_description', 't.description', 't.notes', 't.completed')
 }
+
 
 //get task by id
 function getTasksById(id) {
@@ -45,8 +45,8 @@ function getTasksById(id) {
 }
 
 // add task
-function addTask(task) {
-  return db('task').insert(task)
+function addTask(tasks) {
+  return db('task').insert(tasks)
     .then(id => {
       return getTasksById(id[0])
     })
