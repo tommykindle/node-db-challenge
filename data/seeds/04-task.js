@@ -2,10 +2,10 @@
 exports.seed = function (knex) {
 
 
-  return knex('table_name').truncate()
+  return knex('task').truncate()
     .then(function () {
 
-      return knex('table_name').insert([
+      return knex('task').insert([
         { description: 'Put gas in the lawnmower', notes: 'some notes', completed: true, project_id: 1 },
         { description: 'Start the lawnmower mow the yard', notes: 'do not miss a spot', completed: true, project_id: 1 },
         { description: 'Sharpen pruning sheers ', notes: 'do not cut yourself', completed: false, project_id: 2 },
