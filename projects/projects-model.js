@@ -45,11 +45,12 @@ function getTasksById(id) {
 }
 
 // add task
-return db('task').insert(task)
-  .then(id => {
-    return getTasksById(id[0])
-  })
-
+function addTask(task) {
+  return db('task').insert(task)
+    .then(id => {
+      return getTasksById(id[0])
+    })
+}
 // get resources
 function getResource() {
   return db('resources')
